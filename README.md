@@ -5,6 +5,12 @@
 
 ## Introduction
 
+Compile and execute:
+```bash
+ gcc elem_auto.c -o elem_auto.exe -lm
+ ./elem_auto.exe
+```
+
 ## Elementary cellular automata
 
 Rule 30: 
