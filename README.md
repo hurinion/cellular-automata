@@ -1,2 +1,4 @@
-# elementary-cellular-automata
-Visualisation of elementary cellular automata using bitwise operators in C.
+# Elementary cellular automata
+
+Rule 150: 
+![Rule 150](./rule_150.png)
