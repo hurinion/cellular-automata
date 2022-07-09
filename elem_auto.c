@@ -56,7 +56,7 @@ int main() {
     generate(matrix, rule);
 
     char fname[512];
-    sprintf(fname, "rule_%d", rule);
+    sprintf(fname, "./img/rule_%d.pbm", rule);
     f = fopen(fname, "w");
     output_f(matrix, f);
     fclose(f);
