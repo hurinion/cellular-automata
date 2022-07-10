@@ -37,12 +37,13 @@ Rule 22:
 Rule 32: 
 ![Rule 32](./img/rule_32.png)
 
-Rule 40: 
-![Rule 40](./img/rule_40.png)
-
 Rule 54: 
 ![Rule 54](./img/rule_54.png)
 
 Rule 60: 
 ![Rule 60](./img/rule_60.png)
+
+Rule 62: 
+![Rule 62](./img/rule_62.png)
+
 
