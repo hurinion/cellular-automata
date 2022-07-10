@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Elementary cellular automata](#elementary-cellular-automata)
+- [Random cellular automata](#random-cellular-automata)
 
 ## Introduction
 
@@ -24,3 +25,24 @@ Rule 150:
 
 Rule 182: 
 ![Rule 1820](./img/rule_182.png)
+
+## Random cellular automata
+
+Rule 18: 
+![Rule 18](./img/rule_18.png)
+
+Rule 22: 
+![Rule 22](./img/rule_22.png)
+
+Rule 32: 
+![Rule 32](./img/rule_32.png)
+
+Rule 40: 
+![Rule 40](./img/rule_40.png)
+
+Rule 54: 
+![Rule 54](./img/rule_54.png)
+
+Rule 60: 
+![Rule 60](./img/rule_60.png)
+
