@@ -1,12 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <inttypes.h>
 
-#define NROWS 2500
-#define NCOLS 2501
+#define NROWS 1000
+#define NCOLS 1001
 
-void output_f(uint8_t matrix[NROWS][NCOLS], FILE* f) {
+#define RAND 1 /* 1 TRUE; 0 FALSE */
+
+void output_f(uint8_t matrix[NROWS][NCOLS], int rule) {
+
+    FILE* f;
 
     printf("Writing to file... \n");
+
+    char fname[40];
+    sprintf(fname, "./img/rule_%d.pbm", rule);
+    f = fopen(fname, "w");
 
     int i, j;
 
@@ -19,9 +28,12 @@ void output_f(uint8_t matrix[NROWS][NCOLS], FILE* f) {
         }
         fprintf(f, "\n");
     }
+    fclose(f);
+
 }
 
-void  generate(uint8_t matrix[NROWS][NCOLS], uint8_t rule) {
+
+void  gen_automa(uint8_t matrix[NROWS][NCOLS], uint8_t rule) {
     
     printf("Generating Rule %d elementary cellular automata... \n", rule);
 
@@ -34,34 +46,42 @@ void  generate(uint8_t matrix[NROWS][NCOLS], uint8_t rule) {
             matrix[i + 1][j] = 1 & (rule >> cell);
         }
     }
-    
+
+}
+
+void gen_f(uint8_t rule) {
+
+    int i; 
+    uint8_t matrix[NROWS][NCOLS];
+
+    if (RAND == 1) {
+        for (i = 0; i < NCOLS; i++) {
+            matrix[0][i] = rand() % 2;
+        }
+    }
+
+    else {
+        for (i = 0; i < NCOLS; i++) {
+            matrix[0][i] = 0;
+        }
+        matrix[0][NROWS/2] = 1;
+    }
+
+    gen_automa(matrix, rule);
+    output_f(matrix, rule);
 
 }
 
 int main() {
 
-    int i; 
+    int rule;
 
-    uint8_t rule = 150;
-    uint8_t matrix[NROWS][NCOLS];
-
-    FILE* f;
-
-    for (i = 0; i < NCOLS; i++) {
-        matrix[0][i] = 0;
+    for (rule = 1; rule <= 256; rule++) {
+        gen_f(rule);
     }
-
-    matrix[0][NROWS/2] = 1;
-
-    generate(matrix, rule);
-
-    char fname[512];
-    sprintf(fname, "./img/rule_%d.pbm", rule);
-    f = fopen(fname, "w");
-    output_f(matrix, f);
-    fclose(f);
 
     printf("...program complete. \n");
 
     return 0;
+
 }
