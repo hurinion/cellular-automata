@@ -46,4 +46,7 @@ Rule 60:
 Rule 62: 
 ![Rule 62](./img/rule_62.png)
 
+Rule 226: 
+![Rule 226](./img/rule_226.png)
+
 
