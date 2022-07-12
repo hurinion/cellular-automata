@@ -5,6 +5,7 @@
 #define NROWS 1000
 #define NCOLS 1001
 
+/. set seed to random ./
 #define RAND 1 /* 1 TRUE; 0 FALSE */
 
 void output_f(uint8_t matrix[NROWS][NCOLS], int rule) {
@@ -12,7 +13,7 @@ void output_f(uint8_t matrix[NROWS][NCOLS], int rule) {
     FILE* f;
 
     printf("Writing to file... \n");
-
+    
     char fname[40];
     sprintf(fname, "./img/rule_%d.pbm", rule);
     f = fopen(fname, "w");
@@ -21,7 +22,8 @@ void output_f(uint8_t matrix[NROWS][NCOLS], int rule) {
 
     fprintf(f, "P1\n");
     fprintf(f, "%d %d\n", NROWS-1, NCOLS/2-2);
-
+    
+    /. output automata values to file ./
     for (i = 0; i < NROWS; i++) {
         for (j = 1; j < NCOLS-1; j++) {
             fprintf(f, "%d ", matrix[i][j]);
@@ -53,14 +55,17 @@ void gen_f(uint8_t rule) {
 
     int i; 
     uint8_t matrix[NROWS][NCOLS];
-
+    
+    /. initialises automata ./
     if (RAND == 1) {
+        /. random seed ./
         for (i = 0; i < NCOLS; i++) {
             matrix[0][i] = rand() % 2;
         }
     }
 
     else {
+        /. single seed ./
         for (i = 0; i < NCOLS; i++) {
             matrix[0][i] = 0;
         }
@@ -75,7 +80,8 @@ void gen_f(uint8_t rule) {
 int main() {
 
     int rule;
-
+    
+    /. loops through possible rules ./
     for (rule = 1; rule <= 256; rule++) {
         gen_f(rule);
     }
